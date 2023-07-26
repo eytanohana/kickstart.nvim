@@ -206,6 +206,8 @@ require('lazy').setup({
   { import = 'custom.plugins' },
 }, {})
 
+-- [[ Basic Options]]
+require('custom.options')
 
 -- [[ Basic Keymaps ]]
 
