@@ -206,13 +206,14 @@ require('lazy').setup({
   { import = 'custom.plugins' },
 }, {})
 
--- [[ Basic Options]]
+-- [[ Options ]]
 require('custom.options')
 
--- [[ Basic Keymaps ]]
+-- [[ Keymaps ]]
 require('custom.keymaps')
 
-
+-- [[ Commands ]]
+require('custom.commands')
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
