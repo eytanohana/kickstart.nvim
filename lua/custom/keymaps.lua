@@ -1,6 +1,11 @@
 local map = vim.keymap.set
 
+local silent = { silent = true }
+local  noremap = { noremap = true }
+
+
 map('n', '<leader>ss', ':w<CR>:luafile %<CR>')
+
 -- Keymaps for better default experience
 map({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
@@ -79,8 +84,8 @@ map('n', 'cp', ':let @+ = expand("%:p")<CR>:echo @+<CR>')
 map('n', 'cd', ':CP<CR>')  -- todo: add CP
 
 -- unhighlight search results
-map('n', '<C-h>', ':nohl<CR>')
-map('i', '<C-h>', '<ESC>:nohl<CR>a', { noremap = true })
+map('n', '<C-h>', ':nohl<CR>', silent)
+map('i', '<C-h>', '<ESC>:nohl<CR>a', noremap)
 
 -- toggle relative line numbers
 map('n', '<leader>rn', ':set relativenumber!<CR>') --todo: clashes with rename?
