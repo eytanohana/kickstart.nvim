@@ -11,6 +11,7 @@ return {
   },
   config = function ()
     require('neo-tree').setup {}
+    vim.keymap.set('n', '<A-0>', ':Neotree toggle reveal_force_cwd<CR>')
   end,
 }
 
