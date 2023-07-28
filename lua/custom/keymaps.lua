@@ -112,6 +112,9 @@ map('n', '<A-S-l>', ':vertical resize -3<CR>')
 map('n', '<A-S-k>', ':resize +3<CR>')
 map('n', '<A-S-j>', ':resize -3<CR>')
 
+map('n', '<A-i>', 'gT')
+map('n', '<A-o>', 'gt')
+
 -- -- swap split windows
 -- keys.nmap('<leader>sr', '<C-w>r')
 -- -- close all splits except the focused one
