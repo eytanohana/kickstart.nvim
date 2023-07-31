@@ -10,7 +10,16 @@ return {
     "MunifTanjim/nui.nvim",
   },
   config = function ()
-    require('neo-tree').setup {}
+    require('neo-tree').setup({
+      filesystem = {
+        window = {
+          mappings = {
+            ['l'] = 'open',
+            ['h'] = 'close_node'
+          }
+        }
+      }
+    })
     vim.keymap.set('n', '<A-0>', ':Neotree toggle reveal_force_cwd<CR>')
   end,
 }
