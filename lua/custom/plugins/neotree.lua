@@ -20,7 +20,7 @@ return {
         }
       }
     })
-    vim.keymap.set('n', '<A-0>', ':Neotree toggle reveal_force_cwd<CR>')
+    vim.keymap.set('n', '<A-0>', ':Neotree toggle reveal_force_cwd<CR>', { silent = true })
   end,
 }
 
