@@ -215,6 +215,9 @@ require('custom.commands')
 -- [[ Autocommands ]]
 require('custom.aucommands')
 
+-- [[ Plugin keymaps ]]
+require('custom.plugin_maps')
+
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
