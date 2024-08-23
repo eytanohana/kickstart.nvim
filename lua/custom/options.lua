@@ -6,7 +6,7 @@ set.softtabstop = 4
 set.shiftwidth = 4
 
 -- show tabs
-set.showtabline = 4
+set.showtabline = 2
 
 -- be smart when using tabs ;)
 set.smarttab = true
@@ -105,4 +105,4 @@ set.list = true
 set.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
-vim.opt.inccommand = 'split'
+set.inccommand = 'split'
