@@ -7,15 +7,15 @@ return {
   branch = '0.1.x',
   dependencies = { 'nvim-lua/plenary.nvim' },
   config = function()
-    local actions = require('telescope.actions')
+    local actions = require 'telescope.actions'
     require('telescope').setup {
       defaults = {
         mappings = {
           i = {
             ['<C-u>'] = false,
             ['<C-d>'] = false,
-            ["<C-j>"] = actions.move_selection_next,
-            ["<C-k>"] = actions.move_selection_previous,
+            ['<C-j>'] = actions.move_selection_next,
+            ['<C-k>'] = actions.move_selection_previous,
           },
         },
       },
@@ -25,7 +25,7 @@ return {
     pcall(require('telescope').load_extension, 'fzf')
 
     -- See `:help telescope.builtin`
-    local builtin = require('telescope.builtin')
+    local builtin = require 'telescope.builtin'
     vim.keymap.set('n', '<leader>sr', builtin.oldfiles, { desc = '[S]earch [R]ecent files' })
     vim.keymap.set('n', '<leader><space>', builtin.buffers, { desc = '[ ] Find existing buffers' })
     vim.keymap.set('n', '<leader>gf', builtin.git_files, { desc = 'Search [G]it [F]iles' })
@@ -42,5 +42,5 @@ return {
         previewer = false,
       })
     end, { desc = '[/] Fuzzily search in current buffer' })
-  end
+  end,
 }
