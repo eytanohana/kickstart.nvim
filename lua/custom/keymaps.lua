@@ -3,7 +3,7 @@ local map = vim.keymap.set
 local silent = { silent = true }
 local noremap = { noremap = true }
 
-map('n', '<leader>ss', ':w<CR>:luafile %<CR>')
+map('n', '<leader>sl', ':w<CR>:luafile %<CR>')
 
 -- Keymaps for better default experience
 map({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
