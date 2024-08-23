@@ -1,8 +1,7 @@
 local map = vim.keymap.set
 
 local silent = { silent = true }
-local  noremap = { noremap = true }
-
+local noremap = { noremap = true }
 
 map('n', '<leader>ss', ':w<CR>:luafile %<CR>')
 
@@ -57,7 +56,7 @@ map({ 'n', 'v' }, 'ZX', '<ESC>ZQ')
 
 -- move lines up/down
 map('n', '<C-j>', ':m+<CR>==')
-map('n', '<C-k>', ':m-2<CR>==')  -- todo: clashes with signature help
+map('n', '<C-k>', ':m-2<CR>==') -- todo: clashes with signature help
 map('v', '<C-k>', ":m '<-2<CR>gv=gv")
 map('v', '<C-j>', ":m '>+1<CR>gv=gv")
 map('i', '<C-k>', '<ESC>:m-2<CR>==')
@@ -81,7 +80,7 @@ map('v', '<S-TAB>', '<gv')
 map('n', 'cp', ':let @+ = expand("%:p")<CR>:echo @+<CR>')
 
 -- copy absoulute directory path of current buffer
-map('n', 'cd', ':CP<CR>')  -- todo: add CP
+map('n', 'cd', ':CP<CR>') -- todo: add CP
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
@@ -107,10 +106,10 @@ map('i', '<A-h>', '<esc><C-W>h')
 map('i', '<A-l>', '<esc><C-W>l')
 
 -- adjust split sizes more user friendly
-map('n', '<A-S-h>', ':vertical resize +3<CR>')
-map('n', '<A-S-l>', ':vertical resize -3<CR>')
-map('n', '<A-S-k>', ':resize +3<CR>')
-map('n', '<A-S-j>', ':resize -3<CR>')
+map('n', '<C-A-S-H>', ':vertical resize +3<CR>')
+map('n', '<C-A-S-L>', ':vertical resize -3<CR>')
+map('n', '<C-A-S-K>', ':resize +3<CR>')
+map('n', '<C-A-S-J>', ':resize -3<CR>')
 
 map('n', '<A-i>', 'gT')
 map('n', '<A-o>', 'gt')
@@ -175,4 +174,5 @@ map('i', 'ppp', '<ESC>p')
 map('n', 'vaa', 'ggVG')
 map('n', 'yaa', 'ggVGy')
 
-map('n', '<S-C-O>' , '<C-i>', noremap)
+map('n', '<A-S-H>', '<C-o>', noremap)
+map('n', '<A-S-L>', '<C-i>', noremap)
