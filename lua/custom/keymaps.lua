@@ -83,9 +83,9 @@ map('n', 'cp', ':let @+ = expand("%:p")<CR>:echo @+<CR>')
 -- copy absoulute directory path of current buffer
 map('n', 'cd', ':CP<CR>')  -- todo: add CP
 
--- unhighlight search results
-map('n', '<C-h>', ':nohl<CR>', silent)
-map('i', '<C-h>', '<ESC>:nohl<CR>a', noremap)
+-- Clear highlights on search when pressing <Esc> in normal mode
+--  See `:help hlsearch`
+map('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- toggle relative line numbers
 map('n', '<leader>rn', ':set relativenumber!<CR>') --todo: clashes with rename?

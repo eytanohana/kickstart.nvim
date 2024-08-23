@@ -1,4 +1,4 @@
-local set = vim.o
+local set = vim.opt
 
 -- set tabs to 4 spaces
 set.tabstop = 4
@@ -18,15 +18,16 @@ set.expandtab = true
 -- auto indent
 set.autoindent = true
 
--- highlight the current line
+-- Show which line your cursor is on
 set.cursorline = true
 
 -- show line numbers/relative line numbers
 set.number = true
 set.relativenumber = true
 
--- case insensitive search unless uppercase is included
+-- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 set.ignorecase = true
+set.smartcase = true
 
 -- disable swap file
 set.swapfile = false
@@ -39,7 +40,13 @@ set.encoding = 'utf-8'
 set.autoread = true
 
 -- Sync clipboard between OS and Neovim.
-set.clipboard = 'unnamedplus'
+--  Schedule the setting after `UiEnter` because it can increase startup-time.
+--  Remove this option if you want your OS clipboard to remain independent.
+--  See `:help 'clipboard'`
+vim.schedule(function()
+    set.clipboard = 'unnamedplus'
+end)
+
 
 -- keep the cursor 2 lines from the top/bottom
 set.scrolloff = 2
@@ -68,7 +75,7 @@ set.startofline = false
 set.completeopt = 'menuone,noinsert,noselect'
 
 -- set undotree file directory
-set.undodir = os.getenv('HOME') .. '/.config/nvim/.undodir'
+set.undodir = os.getenv 'HOME' .. '/.config/nvim/.undodir'
 set.undofile = true
 
 -- enable mouse
@@ -81,12 +88,24 @@ set.hlsearch = true
 set.updatetime = 250
 set.timeoutlen = 300
 
-
--- set.signcolumn = 'yes'
+set.signcolumn = 'auto'
 
 -- more terminal colors
 set.termguicolors = true
 
 -- Enable break indent
-vim.o.breakindent = true
+set.breakindent = true
 
+-- Don't show the mode, since it's already in the status line
+set.showmode = false
+
+
+-- Sets how neovim will display certain whitespace characters in the editor.
+--  See `:help 'list'`
+--  and `:help 'listchars'`
+set.list = true
+set.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
+
+-- Preview substitutions live, as you type!
+vim.opt.inccommand = 'split'

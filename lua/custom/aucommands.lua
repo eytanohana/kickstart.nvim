@@ -1,12 +1,11 @@
-local api = vim.api
 local clear = { clear = true }
 
 -- create general au group
-local general = api.nvim_create_augroup('General', clear)
+local general = vim.api.nvim_create_augroup('General', clear)
 
 
 -- go to the last location the cursor was at when opening a file
-api.nvim_create_autocmd('BufReadPost',
+vim.api.nvim_create_autocmd('BufReadPost',
     {
         command = [[if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif]],
         group = general
@@ -15,7 +14,7 @@ api.nvim_create_autocmd('BufReadPost',
 
 
 -- check for external edits to the file
-api.nvim_create_autocmd({'FocusGained', 'BufEnter'},
+vim.api.nvim_create_autocmd({'FocusGained', 'BufEnter'},
     {
         command = 'checktime',
         group = general
@@ -23,33 +22,35 @@ api.nvim_create_autocmd({'FocusGained', 'BufEnter'},
 )
 
 
--- Highlight on yank 
+-- Highlight when yanking (copying) text
+--  Try it with `yap` in normal mode
+--  See `:help vim.highlight.on_yank()`
 vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', clear),
   callback = function()
-    vim.highlight.on_yank { timeout = 300 }
+    vim.highlight.on_yank()
   end,
-  group = general,
-  pattern = '*',
 })
 
 
-local qflist = api.nvim_create_augroup('QuickFixList', clear)
+local qflist = vim.api.nvim_create_augroup('QuickFixList', clear)
 
-api.nvim_create_autocmd(
+vim.api.nvim_create_autocmd(
     'FileType',
     {
         group = qflist,
         pattern = 'qf',
         callback = function()
-            api.nvim_buf_set_keymap(0, 'n', 'J', 'j<CR>zz<C-w>j', { noremap = true, silent = true })
-            api.nvim_buf_set_keymap(0, 'n', 'K', 'k<CR>zz<C-w>j', { noremap = true, silent = true })
-            api.nvim_buf_set_keymap(0, 'n', 'q', 'ZQ', { noremap = true, silent = true })
+            vim.api.nvim_buf_set_keymap(0, 'n', 'J', 'j<CR>zz<C-w>j', { noremap = true, silent = true })
+            vim.api.nvim_buf_set_keymap(0, 'n', 'K', 'k<CR>zz<C-w>j', { noremap = true, silent = true })
+            vim.api.nvim_buf_set_keymap(0, 'n', 'q', 'ZQ', { noremap = true, silent = true })
         end
     }
 )
 
-local python_group = api.nvim_create_augroup('PythonGroup', clear)
-api.nvim_create_autocmd(
+local python_group = vim.api.nvim_create_augroup('PythonGroup', clear)
+vim.api.nvim_create_autocmd(
     'FileType',
     {
         group = python_group,
