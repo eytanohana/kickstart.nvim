@@ -44,9 +44,8 @@ set.autoread = true
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
 vim.schedule(function()
-    set.clipboard = 'unnamedplus'
+  set.clipboard = 'unnamedplus'
 end)
-
 
 -- keep the cursor 2 lines from the top/bottom
 set.scrolloff = 2
@@ -99,13 +98,11 @@ set.breakindent = true
 -- Don't show the mode, since it's already in the status line
 set.showmode = false
 
-
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 set.list = true
 set.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
-
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
