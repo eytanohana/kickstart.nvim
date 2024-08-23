@@ -175,4 +175,4 @@ map('i', 'ppp', '<ESC>p')
 map('n', 'vaa', 'ggVG')
 map('n', 'yaa', 'ggVGy')
 
-
+map('n', '<S-C-O>' , '<C-i>', noremap)

@@ -96,7 +96,8 @@ require('lazy').setup({
       -- Snippet Engine & its associated nvim-cmp source
       'L3MON4D3/LuaSnip',
       'saadparwaiz1/cmp_luasnip',
-
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
       -- Adds LSP completion capabilities
       'hrsh7th/cmp-nvim-lsp',
 
@@ -303,8 +304,14 @@ local on_attach = function(_, bufnr)
     if desc then
       desc = 'LSP: ' .. desc
     end
-
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
+  end
+
+  local imap = function(keys, func, desc)
+    if desc then
+      desc = 'LSP: ' .. desc
+    end
+    vim.keymap.set('i', keys, func, { buffer = bufnr, desc = desc })
   end
 
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
@@ -319,7 +326,8 @@ local on_attach = function(_, bufnr)
 
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  nmap('<C-p>', vim.lsp.buf.signature_help, 'Signature Documentation')
+  nmap('gs', vim.lsp.buf.signature_help, 'Signature Documentation')
+  imap('<C-i>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
   -- Lesser used LSP functionality
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
@@ -398,8 +406,8 @@ cmp.setup {
     end,
   },
   mapping = cmp.mapping.preset.insert {
-    ['<C-j>'] = cmp.mapping.select_next_item(),
-    ['<C-k>'] = cmp.mapping.select_prev_item(),
+    ['J'] = cmp.mapping.select_next_item(),
+    ['K'] = cmp.mapping.select_prev_item(),
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete {},
@@ -429,6 +437,8 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    { name = 'buffer', keyword_length = 3 },
+    { name = 'path' },
   },
 }
 
