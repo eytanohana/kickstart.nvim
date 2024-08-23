@@ -86,9 +86,9 @@ require('lazy').setup({
             require('gitsigns').preview_hunk()
           end
         end
-        vim.keymap.set('n', '<A-K>', next_prev_hunk(require('gitsigns').prev_hunk), { buffer = bufnr, desc = 'Git Previous Hunk' })
-        vim.keymap.set('n', '<A-J>', next_prev_hunk(require('gitsigns').next_hunk), { buffer = bufnr, desc = 'Git Next Hunk' })
-        vim.keymap.set('n', '<A-Z>', require('gitsigns').reset_hunk, { buffer = bufnr, desc = 'Git Reset Hunk' })
+        vim.keymap.set('n', '<A-S-K>', next_prev_hunk(require('gitsigns').prev_hunk), { buffer = bufnr, desc = 'Git Previous Hunk' })
+        vim.keymap.set('n', '<A-S-J>', next_prev_hunk(require('gitsigns').next_hunk), { buffer = bufnr, desc = 'Git Next Hunk' })
+        vim.keymap.set('n', '<A-S-Z>', require('gitsigns').reset_hunk, { buffer = bufnr, desc = 'Git Reset Hunk' })
         vim.keymap.set('n', '<leader>gb', require('gitsigns').blame, { buffer = bufnr, desc = 'Git Blame' })
       end,
     },
