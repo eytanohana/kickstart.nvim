@@ -101,8 +101,8 @@ set.showmode = false
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
-set.list = true
-set.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+-- set.list = true
+-- set.listchars = { tab = '▎', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
 set.inccommand = 'split'
