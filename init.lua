@@ -258,6 +258,13 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>ss', builtin.find_files, { desc = '[S]earch File[S]' })
       vim.keymap.set('n', '<leader>sb', builtin.builtin, { desc = '[S]earch Telescope [B]uiltins' })
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
+
+      vim.keymap.set('n', '<C-S-F>', function()
+        -- Get the copied text
+        local text = vim.fn.getreg '"'
+        require('telescope.builtin').grep_string { search = text }
+      end, { desc = 'Search for yanked selection' })
+
       vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
       vim.keymap.set('n', '<leader>sr', builtin.oldfiles, { desc = '[S]earch [R]ecent Files' })
