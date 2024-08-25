@@ -30,38 +30,38 @@ return {
 
     vim.keymap.set('n', '<A-0>', ':Neotree toggle reveal_force_cwd<CR>', { silent = true })
 
-    -- Create an augroup for NeoTree autocommands
-    local neo_tree_tab_sync_group = vim.api.nvim_create_augroup('NeoTreeTabSync', { clear = true })
-    local function is_neotree_open()
-      -- Check if NeoTree is not already open in the current tab
-      for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
-        local bufname = vim.api.nvim_buf_get_name(vim.api.nvim_win_get_buf(win))
-        if bufname:match 'NeoTree' then
-          return true
-        end
-      end
-      return false
-    end
-
-    -- Auto-open NeoTree when switching tabs
-    vim.api.nvim_create_autocmd('TabEnter', {
-      group = neo_tree_tab_sync_group, -- Add to the created augroup
-      callback = function()
-        if not is_neotree_open() then
-          vim.defer_fn(function()
-            vim.cmd 'Neotree show'
-          end, 50)
-        end
-      end,
-    })
-
-    vim.api.nvim_create_autocmd('TabLeave', {
-      group = neo_tree_tab_sync_group, -- Add to the created augroup
-      callback = function()
-        vim.defer_fn(function()
-          vim.cmd 'Neotree close'
-        end, 50)
-      end,
-    })
+    -- -- Create an augroup for NeoTree autocommands
+    -- local neo_tree_tab_sync_group = vim.api.nvim_create_augroup('NeoTreeTabSync', { clear = true })
+    -- local function is_neotree_open()
+    --   -- Check if NeoTree is not already open in the current tab
+    --   for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+    --     local bufname = vim.api.nvim_buf_get_name(vim.api.nvim_win_get_buf(win))
+    --     if bufname:match 'NeoTree' then
+    --       return true
+    --     end
+    --   end
+    --   return false
+    -- end
+    --
+    -- -- Auto-open NeoTree when switching tabs
+    -- vim.api.nvim_create_autocmd('TabEnter', {
+    --   group = neo_tree_tab_sync_group, -- Add to the created augroup
+    --   callback = function()
+    --     if not is_neotree_open() then
+    --       vim.defer_fn(function()
+    --         vim.cmd 'Neotree show'
+    --       end, 50)
+    --     end
+    --   end,
+    -- })
+    --
+    -- vim.api.nvim_create_autocmd('TabLeave', {
+    --   group = neo_tree_tab_sync_group, -- Add to the created augroup
+    --   callback = function()
+    --     vim.defer_fn(function()
+    --       vim.cmd 'Neotree close'
+    --     end, 50)
+    --   end,
+    -- })
   end,
 }
