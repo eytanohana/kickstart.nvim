@@ -47,9 +47,10 @@ return {
     vim.api.nvim_create_autocmd('TabEnter', {
       group = neo_tree_tab_sync_group, -- Add to the created augroup
       callback = function()
-        local win_found = is_neotree_open()
-        if not win_found then
-          vim.cmd 'Neotree show'
+        if not is_neotree_open() then
+          vim.defer_fn(function()
+            vim.cmd 'Neotree show'
+          end, 50)
         end
       end,
     })
@@ -57,7 +58,9 @@ return {
     vim.api.nvim_create_autocmd('TabLeave', {
       group = neo_tree_tab_sync_group, -- Add to the created augroup
       callback = function()
-        vim.cmd 'Neotree close'
+        vim.defer_fn(function()
+          vim.cmd 'Neotree close'
+        end, 50)
       end,
     })
   end,
