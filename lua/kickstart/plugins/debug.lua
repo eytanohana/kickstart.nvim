@@ -95,7 +95,7 @@ return {
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
     -- Install golang specific config
-    require('dap-python').setup('~/.config/nvim/.virtualenv/debugpy/bin/python')
+    require('dap-python').setup '~/.config/nvim/.virtualenv/debugpy/bin/python'
     require('dap-go').setup {
       delve = {
         -- On Windows delve must be run attached or it crashes.
