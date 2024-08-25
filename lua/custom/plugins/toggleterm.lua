@@ -52,7 +52,7 @@ return {
   config = function()
     require('toggleterm').setup {
       direction = 'horizontal', -- Default split direction
-      size = 10, -- Size of the horizontal split
+      size = 20, -- Size of the horizontal split
     }
   end,
 }
