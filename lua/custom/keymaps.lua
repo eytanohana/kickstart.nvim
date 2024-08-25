@@ -1,9 +1,6 @@
 local map = vim.keymap.set
 
-local silent = { silent = true }
-local noremap = { noremap = true }
-
-map('n', '<leader>sl', ':w<CR>:luafile %<CR>')
+map('n', '<leader>sl', ':w<CR>:luafile %<CR>', { desc = '[S]ource the current [L]ua file' })
 
 -- Keymaps for better default experience
 map({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
@@ -42,7 +39,7 @@ map('n', 'vv', 'V')
 map('n', '<C-r>', ':%s//g<Left><Left>')
 
 -- toggle wrap
-map('n', 'zx', ':set wrap!<CR>')
+map('n', 'zx', ':set wrap!<CR>', { desc = 'Toggle text wrapping' })
 
 -- insert line below/above
 map('n', 'm', 'o<ESC>')
@@ -63,7 +60,7 @@ map('i', '<C-k>', '<ESC>:m-2<CR>==')
 map('i', '<C-j>', '<ESC>:m+<CR>==')
 
 -- clear the current line
-map('n', 'cl', 'S<ESC>')
+map('n', 'cl', 'S<ESC>', { desc = '[CL]ear the current line' })
 
 -- duplicate current line/selection
 map('n', '<leader>p', 'yyp')
@@ -174,5 +171,5 @@ map('i', 'ppp', '<ESC>p')
 map('n', 'vaa', 'ggVG')
 map('n', 'yaa', 'ggVGy')
 
-map('n', '<A-S-H>', '<C-o>', noremap)
-map('n', '<A-S-L>', '<C-i>', noremap)
+map('n', '<A-S-H>', '<C-o>')
+map('n', '<A-S-L>', '<C-i>')
