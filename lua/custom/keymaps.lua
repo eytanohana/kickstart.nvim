@@ -173,3 +173,6 @@ map('n', 'yaa', 'ggVGy')
 
 map('n', '<A-S-H>', '<C-o>')
 map('n', '<A-S-L>', '<C-i>')
+
+map('n', '<A-S-I>', ':tabmove -1<CR>', { silent = true })
+map('n', '<A-S-O>', ':tabmove +1<CR>', { silent = true })
