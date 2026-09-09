@@ -50,7 +50,7 @@ return {
 
       ---@param enabled boolean
       local function set_anti_conceal(enabled)
-        local state = require('render-markdown.state')
+        local state = require 'render-markdown.state'
         state.config.anti_conceal.enabled = enabled
         for _, buf_cfg in pairs(state.cache) do
           buf_cfg.anti_conceal.enabled = enabled
