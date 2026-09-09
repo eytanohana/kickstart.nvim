@@ -49,6 +49,9 @@ return {
     },
     formatters_by_ft = {
       lua = { 'stylua' },
+      -- goimports = gofmt + import add/remove/group. Matches the gofmt formatter
+      -- golangci-lint enforces in CI, and keeps imports tidy on save.
+      go = { 'goimports' },
       -- jq: fast, preserves key order; uses buffer shiftwidth for indent (see after/ftplugin/json.lua)
       json = { 'jq' },
       -- ruff_organize_imports sorts and removes unused imports, then ruff_format applies formatting.

@@ -1,4 +1,4 @@
--- Neotest: test runner framework with pytest adapter.
+-- Neotest: test runner framework with pytest and Go adapters.
 -- Keymaps under <leader>n (registered in which-key as "Neotest").
 return {
   'nvim-neotest/neotest',
@@ -7,6 +7,7 @@ return {
     'nvim-lua/plenary.nvim',
     'nvim-treesitter/nvim-treesitter',
     'nvim-neotest/neotest-python',
+    'fredrikaverpil/neotest-golang',
   },
   keys = {
     {
@@ -100,6 +101,13 @@ return {
           -- Disabled: runs pytest --collect-only which is very slow in large repos.
           -- Tests are still discoverable by function name; only parametrize IDs are lost.
           pytest_discover_instances = false,
+        },
+        require 'neotest-golang' {
+          -- Mirrors `make test` (go test -race ./...); -count=1 defeats the test cache
+          -- so a re-run actually re-executes instead of replaying a cached PASS.
+          go_test_args = { '-v', '-race', '-count=1' },
+          -- Debug a test with <leader>nd: neotest-golang drives delve through nvim-dap-go.
+          dap_go_enabled = true,
         },
       },
       output = { open_on_run = false },

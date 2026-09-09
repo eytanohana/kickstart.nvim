@@ -104,9 +104,12 @@ return {
     vim.lsp.config('rust_analyzer', require 'lsp.rust_analyzer')
     vim.lsp.config('lua_ls', require 'lsp.lua_ls')
     vim.lsp.config('vtsls', require 'lsp.vtsls')
-    vim.lsp.enable { 'basedpyright', 'ruff', 'rust_analyzer', 'lua_ls', 'vtsls' }
+    vim.lsp.config('gopls', require 'lsp.gopls')
+    vim.lsp.enable { 'basedpyright', 'ruff', 'rust_analyzer', 'lua_ls', 'vtsls', 'gopls' }
 
-    -- Mason package names (use hyphen for rust-analyzer, not underscore)
+    -- Mason package names (use hyphen for rust-analyzer, not underscore).
+    -- gopls is deliberately absent: it is installed with `go install` so it always
+    -- matches the active Go toolchain (see lua/lsp/gopls.lua).
     require('mason-tool-installer').setup {
       ensure_installed = { 'stylua', 'basedpyright', 'ruff', 'rust-analyzer', 'debugpy', 'vtsls' },
     }

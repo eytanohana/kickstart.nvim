@@ -112,3 +112,13 @@ set.showmode = false
 
 -- Preview substitutions live, as you type!
 set.inccommand = 'split'
+
+-- Make Go tooling reachable no matter how Neovim was launched (a GUI/app launch does
+-- not source ~/.zshrc, so $GOPATH/bin would be missing and gopls, goimports, dlv and
+-- golangci-lint would silently fail to start).
+local go_bin = (vim.env.GOPATH or (vim.env.HOME .. '/go')) .. '/bin'
+for _, dir in ipairs { go_bin, '/opt/homebrew/bin' } do
+  if vim.fn.isdirectory(dir) == 1 and not string.find(vim.env.PATH, dir, 1, true) then
+    vim.env.PATH = dir .. ':' .. vim.env.PATH
+  end
+end
